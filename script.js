@@ -4,7 +4,7 @@
 
 document.querySelector(".searchButton").addEventListener("click", buttonDropdown);
 
-document.querySelector(".searchInput").addEventListener("keyup", filterFunction);
+document.querySelector("#searchInput").addEventListener("keyup", filterFunction);
 
 function buttonDropdown() {
   document.getElementById("searchDropdown").classList.toggle("show");
