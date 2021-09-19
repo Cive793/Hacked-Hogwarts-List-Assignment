@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacked Hogwarts Student List</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="assets/hp.png" />
+    </header>
+
+    <div class="heading">
+      <h1>Hacked Hogwarts Student List</h1>
+      <div class="crests">
+        <img src="assets/gryffindor.png" />
+        <img src="assets/hufflepuff.png" />
+        <img src="assets/ravenclan.png" />
+        <img src="assets/slytherin.png" />
+      </div>
+    </div>
+
+    <main>
+      <div class="search">
+        <p class="searchButton">Search</p>
+        <div id="searchDropdown" class="dropdown-content">
+          <input type="text" placeholder="Search students" id="searchInput" onkeyup="filterFunction()" />
+          <a href="#all">All</a>
+          <a href="#enrolled">Enrolled</a>
+          <a href="#expelled">Expelled</a>
+          <a href="#special">Special</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

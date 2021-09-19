@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #740001;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  font-size: 42px;
+}
+
+.heading {
+  margin: auto;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.crests {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.crests img {
+  width: 65px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+main {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
+
+/* search */
+
+#searchDropdown a {
+  font-family: "Nunito", sans-serif;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+::placeholder {
+  font-family: "Nunito", sans-serif;
+}
+
+.searchButton {
+  cursor: pointer;
+  width: min-content;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #740001;
+}
+
+/* The search field */
+#searchInput {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+
+  z-index: 1;
+  box-shadow: 5px 8px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+
+/* search */
