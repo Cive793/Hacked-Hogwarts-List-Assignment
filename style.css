@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 
 body {
   margin: 0;
@@ -52,7 +53,6 @@ main {
 }
 
 /* search */
-
 #searchDropdown a {
   font-family: "Nunito", sans-serif;
   color: #740001;
@@ -106,14 +106,13 @@ main {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: white;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu */
 .show {
   display: block;
 }
-
 /* search */
 
 .listContainer {
@@ -123,14 +122,49 @@ main {
 }
 
 .listSections {
-  display: flex;
-  justify-content: space-around;
   padding: 30px;
+  width: 100%;
 }
 
-.listSections h2 {
+.sorting {
+  display: flex;
+  justify-content: space-around;
+}
+
+.listSections th {
   font-family: "Nunito", sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #740001;
+}
+
+.attributions {
+  background-color: #740001;
+  text-align: center;
+  height: 260px;
+  padding-top: 20px;
+
+  margin-top: 120px;
+}
+
+.attributions h1 {
+  color: #d3a625;
+  margin-top: 2px;
+}
+
+.attributions h3 {
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.attributions a {
+  display: block;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  text-decoration: none;
 }
