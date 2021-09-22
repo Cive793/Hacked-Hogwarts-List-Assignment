@@ -53,16 +53,35 @@ function prepareObjects(jsonData) {
   allStudents = jsonData.map(prepareObject);
   console.log(allStudents);
 
-  buildList();
+  //buildList(allStudents);
 }
 
-function prepareObject() {
-  const student = Object.create(Student);
+function prepareObject(student) {
+  const studentObject = Object.create(Student);
   student.img = createImage(student.fullname);
   student.firstName = createFirstName(student.fullname);
-  student.firstName = createMiddleName(student.fullname);
-  student.firstName = createLastName(student.fullname);
-  student.firstName = createNickName(student.fullname);
-  student.gender = createFirstName(student.fullname);
-  student.firstName = Student.gender;
+  student.middleName = createMiddleName(student.fullname);
+  student.lastName = createLastName(student.fullname);
+  student.NicktName = createNickName(student.fullname);
+  student.house = createHouse(student.house);
+  student.gender = Student.gender;
+  return student;
 }
+
+function createImage(fullname) {}
+
+function createFirstName(fullname) {
+  //console.log(fullname);
+  const firstNameOnly = fullname.split(" ")[0].trim();
+  const firstNameCapitalization = firstNameOnly.substring(0, 1).toUpperCase() + firstNameOnly.substring(1).toLowerCase();
+  //console.log(firstNameCapitalization);
+  return firstNameCapitalization;
+}
+
+function createMiddleName(fullname) {}
+
+function createLastName(fullname) {}
+
+function createNickName(fullname) {}
+
+function createHouse(house) {}
