@@ -71,16 +71,36 @@ function prepareObject(student) {
 function createImage(fullname) {}
 
 function createFirstName(fullname) {
-  //console.log(fullname);
-  const firstNameOnly = fullname.split(" ")[0].trim();
-  const firstNameCapitalization = firstNameOnly.substring(0, 1).toUpperCase() + firstNameOnly.substring(1).toLowerCase();
-  //console.log(firstNameCapitalization);
-  return firstNameCapitalization;
+  let firstNameOnly;
+  firstNameOnly = fullname.trim();
+  firstNameOnly = firstNameOnly.split(" ")[0];
+  firstNameOnly = firstNameOnly.substring(0, 1).toUpperCase() + firstNameOnly.substring(1).toLowerCase();
+
+  console.log(firstNameOnly);
+  return firstNameOnly;
 }
 
 function createMiddleName(fullname) {}
 
-function createLastName(fullname) {}
+function createLastName(fullname) {
+  let lastNameOnly;
+  lastNameOnly = fullname.trim();
+  lastNameOnly = lastNameOnly.substring(lastNameOnly.lastIndexOf(" ") + 1);
+  lastNameOnly = lastNameOnly.substring(0, 1).toUpperCase() + lastNameOnly.substring(1).toLowerCase();
+
+  if (lastNameOnly.includes("-")) {
+    let twoLastNamesOnly = lastNameOnly.split("-");
+    twoLastNamesOnly[1] = twoLastNamesOnly[1].substring(0, 1).toUpperCase() + twoLastNamesOnly[1].substring(1).toLowerCase();
+
+    let twoLastNamesJoin = twoLastNamesOnly.join("-");
+
+    //console.log(twoLastNamesJoin);
+    return twoLastNamesJoin;
+  }
+
+  //console.log(lastNameOnly);
+  return lastNameOnly;
+}
 
 function createNickName(fullname) {}
 
