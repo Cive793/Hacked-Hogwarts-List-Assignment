@@ -62,7 +62,7 @@ function prepareObject(student) {
   student.firstName = createFirstName(student.fullname);
   student.middleName = createMiddleName(student.fullname);
   student.lastName = createLastName(student.fullname);
-  student.NicktName = createNickName(student.fullname);
+  student.nickName = createNickName(student.fullname);
   student.house = createHouse(student.house);
   student.gender = Student.gender;
   return student;
@@ -94,7 +94,7 @@ function createMiddleName(fullname) {
   } else {
     middleNameOnly = null;
   }
-  console.log(middleNameOnly);
+  //console.log(middleNameOnly);
   return middleNameOnly;
 }
 
@@ -118,6 +118,19 @@ function createLastName(fullname) {
   return lastNameOnly;
 }
 
-function createNickName(fullname) {}
+function createNickName(fullname) {
+  let nickNameOnly;
+  nickNameOnly = fullname.trim();
+
+  if (fullname.includes('"')) {
+    nickNameOnly = nickNameOnly.substring(nickNameOnly.indexOf(" ") + 2, nickNameOnly.lastIndexOf(" ") - 1);
+    nickNameOnly = nickNameOnly.substring(0, 1).toUpperCase() + nickNameOnly.substring(1).toLowerCase();
+  } else {
+    nickNameOnly = null;
+  }
+
+  //console.log(nickNameOnly);
+  return nickNameOnly;
+}
 
 function createHouse(house) {}
