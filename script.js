@@ -76,11 +76,27 @@ function createFirstName(fullname) {
   firstNameOnly = firstNameOnly.split(" ")[0];
   firstNameOnly = firstNameOnly.substring(0, 1).toUpperCase() + firstNameOnly.substring(1).toLowerCase();
 
-  console.log(firstNameOnly);
+  //console.log(firstNameOnly);
   return firstNameOnly;
 }
 
-function createMiddleName(fullname) {}
+function createMiddleName(fullname) {
+  let middleNameOnly;
+  middleNameOnly = fullname.trim();
+  let numberOfNames = middleNameOnly.split(" ");
+
+  if (fullname.includes('"')) {
+    middleNameOnly = null;
+  } else if (numberOfNames.length > 2) {
+    middleNameOnly = middleNameOnly.substring(middleNameOnly.indexOf(" ") + 1, middleNameOnly.lastIndexOf(" "));
+    //console.log(middleNameOnly);
+    middleNameOnly = middleNameOnly.substring(0, 1).toUpperCase() + middleNameOnly.substring(1).toLowerCase();
+  } else {
+    middleNameOnly = null;
+  }
+  console.log(middleNameOnly);
+  return middleNameOnly;
+}
 
 function createLastName(fullname) {
   let lastNameOnly;
