@@ -133,4 +133,11 @@ function createNickName(fullname) {
   return nickNameOnly;
 }
 
-function createHouse(house) {}
+function createHouse(house) {
+  let correctedHouse;
+  correctedHouse = house.trim();
+  correctedHouse = correctedHouse.substring(0, 1).toUpperCase() + correctedHouse.substring(1).toLowerCase();
+
+  //console.log(correctedHouse);
+  return correctedHouse;
+}
