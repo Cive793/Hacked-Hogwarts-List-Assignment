@@ -44,33 +44,20 @@ function getSearchFilterChoice() {
 }
 
 async function loadJson() {
-  /* fetch("https://petlatkea.dk/2021/hogwarts/students.json")
-    .then((response) => response.json())
-    .then((jsonData) => {
-      prepareObjects(jsonData);
-    });
-
-    fetch("https://petlatkea.dk/2021/hogwarts/families.json")
-    .then((response) => response.json())
-    .then((jsonDataFamilies) => {
-      prepareObjects(jsonDataFamilies);
-    }); */
-
   const responseStudents = await fetch("https://petlatkea.dk/2021/hogwarts/students.json");
   const dataStudents = await responseStudents.json();
 
-  const responseBloodFamilies = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
-  const dataBloodFamilies = await responseBloodFamilies.json();
+  /* const responseBloodFamilies = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
+  const dataBloodFamilies = await responseBloodFamilies.json(); */
 
-  prepareObjects(dataStudents, dataBloodFamilies);
+  prepareObjects(dataStudents /* dataBloodFamilies */);
 }
 
-function prepareObjects(dataStudents, dataBloodFamilies) {
+function prepareObjects(dataStudents /* dataBloodFamilies */) {
   allStudents = dataStudents.map(prepareObject);
-  pureBloodFamilies = dataBloodFamilies.pure;
-  halfBloodFamilies = dataBloodFamilies.half;
+  /* pureBloodFamilies = dataBloodFamilies.pure;
+  halfBloodFamilies = dataBloodFamilies.half; */
   console.log(allStudents);
-  console.log(pureBloodFamilies);
 
   //buildList(allStudents);
 }
@@ -84,7 +71,8 @@ function prepareObject(student) {
   student.nickName = createNickName(student.fullname);
   student.house = createHouse(student.house);
   student.gender = Student.gender;
-  student.blood = createBloodType(student.lastName);
+  student.bloodStatus = createBloodType(student.lastName);
+  //console.log(pureBloodFamilies);
 
   return student;
 }
@@ -163,4 +151,29 @@ function createHouse(house) {
   return correctedHouse;
 }
 
-function createBloodType(lastName) {}
+async function createBloodType(lastName) {
+  let bloodType;
+
+  //console.log(pureBloodFamilies);
+  //console.log(halfBloodFamilies);
+
+  const responseBloodFamilies = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
+  const dataBloodFamilies = await responseBloodFamilies.json();
+
+  pureBloodFamilies = dataBloodFamilies.pure;
+  halfBloodFamilies = dataBloodFamilies.half;
+
+  if (pureBloodFamilies.includes(lastName)) {
+    bloodType = "Pure blood";
+    //console.log("Pure");
+  } else if (halfBloodFamilies.includes(lastName)) {
+    bloodType = "Half blood";
+    //console.log("Half");
+  } else {
+    bloodType = "Muggle";
+    //console.log("Muggle");
+  }
+
+  console.log(bloodType);
+  return bloodType;
+}
