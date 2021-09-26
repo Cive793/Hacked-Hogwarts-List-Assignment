@@ -3,6 +3,8 @@
 window.addEventListener("DOMContentLoaded", start);
 
 let allStudents = [];
+let pureBloodFamilies = [];
+let halfBloodFamilies = [];
 
 const Student = {
   image: "",
@@ -41,17 +43,34 @@ function getSearchFilterChoice() {
   //document.querySelectorAll(".searchFilterChoice").forEach((button) => button.addEventListener("click", selectFilter));
 }
 
-function loadJson() {
-  fetch("https://petlatkea.dk/2021/hogwarts/students.json")
+async function loadJson() {
+  /* fetch("https://petlatkea.dk/2021/hogwarts/students.json")
     .then((response) => response.json())
     .then((jsonData) => {
       prepareObjects(jsonData);
     });
+
+    fetch("https://petlatkea.dk/2021/hogwarts/families.json")
+    .then((response) => response.json())
+    .then((jsonDataFamilies) => {
+      prepareObjects(jsonDataFamilies);
+    }); */
+
+  const responseStudents = await fetch("https://petlatkea.dk/2021/hogwarts/students.json");
+  const dataStudents = await responseStudents.json();
+
+  const responseBloodFamilies = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
+  const dataBloodFamilies = await responseBloodFamilies.json();
+
+  prepareObjects(dataStudents, dataBloodFamilies);
 }
 
-function prepareObjects(jsonData) {
-  allStudents = jsonData.map(prepareObject);
+function prepareObjects(dataStudents, dataBloodFamilies) {
+  allStudents = dataStudents.map(prepareObject);
+  pureBloodFamilies = dataBloodFamilies.pure;
+  halfBloodFamilies = dataBloodFamilies.half;
   console.log(allStudents);
+  console.log(pureBloodFamilies);
 
   //buildList(allStudents);
 }
@@ -65,6 +84,8 @@ function prepareObject(student) {
   student.nickName = createNickName(student.fullname);
   student.house = createHouse(student.house);
   student.gender = Student.gender;
+  student.blood = createBloodType(student.lastName);
+
   return student;
 }
 
@@ -141,3 +162,5 @@ function createHouse(house) {
   //console.log(correctedHouse);
   return correctedHouse;
 }
+
+function createBloodType(lastName) {}

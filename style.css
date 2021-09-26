@@ -126,9 +126,13 @@ main {
   width: 100%;
 }
 
+.listSections thead {
+}
+
 .sorting {
   display: flex;
   justify-content: space-around;
+  width: 100%;
 }
 
 .listSections th {
