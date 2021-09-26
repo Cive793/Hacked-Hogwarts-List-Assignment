@@ -26,10 +26,10 @@ function start() {
 
   //search button
   document.querySelector(".searchButton").addEventListener("click", buttonDropdown);
-  document.querySelector("#searchInput").addEventListener("keyup", getSearchFilterChoice);
+  document.querySelector("#searchInput").addEventListener("keyup", getButtonChoice);
   //search button
 
-  getSearchFilterChoice();
+  getButtonChoice();
   loadJson();
 }
 
@@ -39,7 +39,7 @@ function buttonDropdown() {
 }
 
 //search button filter choice
-function getSearchFilterChoice() {
+function getButtonChoice() {
   //document.querySelectorAll(".searchFilterChoice").forEach((button) => button.addEventListener("click", selectFilter));
 }
 
@@ -154,26 +154,23 @@ function createHouse(house) {
 async function createBloodType(lastName) {
   let bloodType;
 
-  //console.log(pureBloodFamilies);
-  //console.log(halfBloodFamilies);
-
+  //fetch blood families json
   const responseBloodFamilies = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
   const dataBloodFamilies = await responseBloodFamilies.json();
 
+  //decide which are pure and which are halfblood
   pureBloodFamilies = dataBloodFamilies.pure;
   halfBloodFamilies = dataBloodFamilies.half;
 
+  //calculate blood status for each student
   if (pureBloodFamilies.includes(lastName)) {
     bloodType = "Pure blood";
-    //console.log("Pure");
   } else if (halfBloodFamilies.includes(lastName)) {
     bloodType = "Half blood";
-    //console.log("Half");
   } else {
     bloodType = "Muggle";
-    //console.log("Muggle");
   }
 
-  console.log(bloodType);
+  //console.log(bloodType);
   return bloodType;
 }
