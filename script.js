@@ -30,10 +30,16 @@ const Student = {
 function start() {
   console.log("start");
 
-  //search button
-  document.querySelector(".searchButton").addEventListener("click", buttonDropdown);
-  document.querySelector("#searchInput").addEventListener("keyup", getButtonChoice);
-  //search button
+  //filter buttons
+  const filterButtons = document.querySelectorAll("[data-action='filter']");
+  filterButtons.forEach((button) => button.addEventListener("click", registerFilter));
+
+  //sort buttons
+  const sortButtons = document.querySelectorAll("[data-action='sort']");
+  sortButtons.forEach((button) => button.addEventListener("click", registerSort));
+
+  //search input
+  document.querySelector("#searchInput").addEventListener("input", registerSearch);
 
   getButtonChoice();
   loadJson();
@@ -42,11 +48,6 @@ function start() {
 //open search button dropdown
 function buttonDropdown() {
   document.getElementById("searchDropdown").classList.toggle("show");
-}
-
-//search button filter choice
-function getButtonChoice() {
-  //document.querySelectorAll(".searchFilterChoice").forEach((button) => button.addEventListener("click", selectFilter));
 }
 
 async function loadJson() {
@@ -84,9 +85,14 @@ function prepareObject(student) {
   return student;
 }
 
+function registerFilter(filterChoice) {
+  const filter = filterChoice;
+}
+
 function buildList() {
   console.log(allStudents);
-  const filteredList = prepareFilteredList(allStudents);
+  const filteredList = registerFilter(allStudents);
+  const sortedList = registerSort(filteredList);
 }
 
 //cleaning up data
