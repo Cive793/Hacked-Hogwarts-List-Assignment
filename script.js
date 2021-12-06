@@ -30,6 +30,9 @@ const Student = {
 function start() {
   console.log("start");
 
+  //open search button dropdown
+  document.querySelector(".searchButton").addEventListener("click", buttonDropdown);
+
   //filter buttons
   const filterButtons = document.querySelectorAll("[data-action='filter']");
   filterButtons.forEach((button) => button.addEventListener("click", registerFilter));
@@ -41,11 +44,10 @@ function start() {
   //search input
   document.querySelector("#searchInput").addEventListener("input", registerSearch);
 
-  getButtonChoice();
   loadJson();
 }
 
-//open search button dropdown
+//toggle search button dropdown
 function buttonDropdown() {
   document.getElementById("searchDropdown").classList.toggle("show");
 }
@@ -86,8 +88,14 @@ function prepareObject(student) {
 }
 
 function registerFilter(filterChoice) {
-  const filter = filterChoice;
+  const filter = filterChoice.target.dataset.filter;
+  filterSortSettings.filterBy = filter;
+  buildList();
 }
+
+function registerSort() {}
+
+function registerSearch() {}
 
 function buildList() {
   console.log(allStudents);
