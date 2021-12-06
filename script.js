@@ -7,7 +7,7 @@ let pureBloodFamilies = [];
 let halfBloodFamilies = [];
 
 const filterSortSettings = {
-  filterBy: "students",
+  filterBy: "all",
   sortBy: "lastName",
   sortDir: "",
 };
@@ -93,13 +93,22 @@ function registerFilter(filterChoice) {
   buildList();
 }
 
+function filterList(list) {
+  console.log(filterSortSettings.filterBy);
+  let newList = list;
+
+  if (filterSortSettings.filterBy === "gryffindor") {
+    newList = allStudents.filter(onlyGriffindor);
+  }
+}
+
 function registerSort() {}
 
 function registerSearch() {}
 
 function buildList() {
   console.log(allStudents);
-  const filteredList = registerFilter(allStudents);
+  const newList = filterList(allStudents);
   const sortedList = registerSort(filteredList);
 }
 
