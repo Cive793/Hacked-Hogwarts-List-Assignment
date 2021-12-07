@@ -98,7 +98,7 @@ function filterList(list) {
   let newList = list;
 
   if (filterSortSettings.filterBy === "expelled") {
-    newList = Student.expelled === true;
+    newList = allStudents.filter(onlyExpelled);
   } else if (filterSortSettings.filterBy === "Gryffindor") {
     newList = allStudents.filter(onlyGriffindor);
   } else if (filterSortSettings.filterBy === "Slytherin") {
@@ -110,6 +110,10 @@ function filterList(list) {
   }
   console.log(newList);
   return newList;
+}
+
+function onlyExpelled(student) {
+  return student.expelled === true;
 }
 
 function onlyGriffindor(student) {
