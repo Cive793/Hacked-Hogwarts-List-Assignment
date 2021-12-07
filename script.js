@@ -9,7 +9,7 @@ let halfBloodFamilies = [];
 const filterSortSettings = {
   filterBy: "all",
   sortBy: "lastName",
-  sortDirection: "asc",
+  sortDir: "asc",
 };
 
 const Student = {
@@ -42,7 +42,7 @@ function start() {
   sortButtons.forEach((button) => button.addEventListener("click", registerSort));
 
   //search input
-  document.querySelector("#searchInput").addEventListener("input", registerSearch);
+  //document.querySelector("#searchInput").addEventListener("input", registerSearch);
 
   loadJson();
 }
@@ -134,18 +134,46 @@ function onlyHufflepuff(student) {
 
 function registerSort(sortChoiceEvent) {
   const sortBy = sortChoiceEvent.target.dataset.sort;
-  const sortDirection = sortChoiceEvent.target.dataset.sortDirection;
-  filterSortSettings.sortBy = sortBy;
-  filterSortSettings.sortDirection = sortDirection;
+  const sortDir = sortChoiceEvent.target.dataset.sortDirection;
+
+  console.log(`Sort by ${sortBy}`);
+  setSort(sortBy, sortDir);
 }
 
-function registerSearch() {}
+function setSort(sortBy, sortDir) {
+  filterSortSettings.sortBy = sortBy;
+  filterSortSettings.sortDir = sortDir;
+  buildList();
+}
+
+function sortList(sortedList) {
+  let sortDirection = 1;
+  if (filterSortSettings.sortDir === "desc") {
+    sortDirection = -1;
+  }
+  sortedList = sortedList.sort(sortByProperty);
+
+  function sortByProperty(a, b) {
+    if (a[filterSortSettings.sortBy] < b[filterSortSettings.sortBy]) {
+      return -1 * sortDirection;
+    } else {
+      return 1 * sortDirection;
+    }
+  }
+  return sortedList;
+}
+
+//function registerSearch() {}
 
 function buildList() {
-  //console.log(allStudents);
+  //console.log(newList);
   const newList = filterList(allStudents);
-  //const sortedList = registerSort(filteredList);
+  const sortedList = sortList(newList);
+
+  displayList(sortedList);
 }
+
+function displayList(sortedList) {}
 
 //cleaning up data
 function createImage(fullname) {}
