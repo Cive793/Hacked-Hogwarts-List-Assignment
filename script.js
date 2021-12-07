@@ -69,6 +69,7 @@ function prepareObjects(dataStudents /* dataBloodFamilies */) {
 
   //console.log(allStudents);
 
+  //display list
   buildList(allStudents);
 }
 
@@ -163,7 +164,13 @@ function sortList(sortedList) {
   return sortedList;
 }
 
-//function registerSearch() {}
+function registerSearch() {
+  let search = document.querySelector("#searchInput").value.toLowerCase();
+  const searchResult = allStudents.filter((student) => {
+    return student.firstName.toString().toLowerCase().includes(search) || student.middleName.toString().toLowerCase().includes(search) || student.lastName.toString().toLowerCase().includes(search);
+  });
+  displayList(searchResult);
+}
 
 function buildList() {
   //console.log(newList);
