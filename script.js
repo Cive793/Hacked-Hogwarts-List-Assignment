@@ -3,14 +3,13 @@
 window.addEventListener("DOMContentLoaded", start);
 
 let allStudents = [];
-let expelledStudents = [];
 let pureBloodFamilies = [];
 let halfBloodFamilies = [];
 
 const filterSortSettings = {
   filterBy: "all",
   sortBy: "lastName",
-  sortDir: "",
+  sortDirection: "asc",
 };
 
 const Student = {
@@ -88,8 +87,8 @@ function prepareObject(student) {
   return student;
 }
 
-function registerFilter(filterChoice) {
-  const filter = filterChoice.target.dataset.filter;
+function registerFilter(filterChoiceEvent) {
+  const filter = filterChoiceEvent.target.dataset.filter;
   filterSortSettings.filterBy = filter;
   buildList();
 }
@@ -99,7 +98,7 @@ function filterList(list) {
   let newList = list;
 
   if (filterSortSettings.filterBy === "expelled") {
-    newList = expelledStudents;
+    newList = Student.expelled === true;
   } else if (filterSortSettings.filterBy === "Gryffindor") {
     newList = allStudents.filter(onlyGriffindor);
   } else if (filterSortSettings.filterBy === "Slytherin") {
@@ -114,38 +113,27 @@ function filterList(list) {
 }
 
 function onlyGriffindor(student) {
-  if (student.house === "Gryffindor") {
-    return true;
-  } else {
-    return false;
-  }
+  return student.house === "Gryffindor";
 }
 
 function onlySlytherin(student) {
-  if (student.house === "Slytherin") {
-    return true;
-  } else {
-    return false;
-  }
+  return student.house === "Slytherin";
 }
 
 function onlyRavenclaw(student) {
-  if (student.house === "Ravenclaw") {
-    return true;
-  } else {
-    return false;
-  }
+  return student.house === "Ravenclaw";
 }
 
 function onlyHufflepuff(student) {
-  if (student.house === "Hufflepuff") {
-    return true;
-  } else {
-    return false;
-  }
+  return student.house === "Hufflepuff";
 }
 
-function registerSort() {}
+function registerSort(sortChoiceEvent) {
+  const sortBy = sortChoiceEvent.target.dataset.sort;
+  const sortDirection = sortChoiceEvent.target.dataset.sortDirection;
+  filterSortSettings.sortBy = sortBy;
+  filterSortSettings.sortDirection = sortDirection;
+}
 
 function registerSearch() {}
 
