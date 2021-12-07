@@ -3,6 +3,7 @@
 window.addEventListener("DOMContentLoaded", start);
 
 let allStudents = [];
+let expelledStudents = [];
 let pureBloodFamilies = [];
 let halfBloodFamilies = [];
 
@@ -97,8 +98,50 @@ function filterList(list) {
   console.log(filterSortSettings.filterBy);
   let newList = list;
 
-  if (filterSortSettings.filterBy === "gryffindor") {
+  if (filterSortSettings.filterBy === "expelled") {
+    newList = expelledStudents;
+  } else if (filterSortSettings.filterBy === "Gryffindor") {
     newList = allStudents.filter(onlyGriffindor);
+  } else if (filterSortSettings.filterBy === "Slytherin") {
+    newList = allStudents.filter(onlySlytherin);
+  } else if (filterSortSettings.filterBy === "Ravenclaw") {
+    newList = allStudents.filter(onlyRavenclaw);
+  } else if (filterSortSettings.filterBy === "Hufflepuff") {
+    newList = allStudents.filter(onlyHufflepuff);
+  }
+  console.log(newList);
+  return newList;
+}
+
+function onlyGriffindor(student) {
+  if (student.house === "Gryffindor") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function onlySlytherin(student) {
+  if (student.house === "Slytherin") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function onlyRavenclaw(student) {
+  if (student.house === "Ravenclaw") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function onlyHufflepuff(student) {
+  if (student.house === "Hufflepuff") {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -107,9 +150,9 @@ function registerSort() {}
 function registerSearch() {}
 
 function buildList() {
-  console.log(allStudents);
+  //console.log(allStudents);
   const newList = filterList(allStudents);
-  const sortedList = registerSort(filteredList);
+  //const sortedList = registerSort(filteredList);
 }
 
 //cleaning up data
