@@ -82,7 +82,7 @@ function prepareObject(student) {
   studentObject.lastName = createLastName(student.fullname);
   studentObject.nickName = createNickName(student.fullname);
   studentObject.house = createHouse(student.house);
-  studentObject.gender = Student.gender;
+  studentObject.gender = student.gender;
   studentObject.bloodStatus = createBloodType(student.lastName);
   //console.log(pureBloodFamilies);
 
@@ -192,11 +192,13 @@ function displayStudent(student) {
 
   const template = document.querySelector("#student").content;
   const copy = template.cloneNode(true);
-  console.log(copy);
+  //console.log(copy);
   copy.querySelector(".studentFirstName").textContent = student.firstName;
   copy.querySelector(".studentMiddleName").textContent = student.middleName;
   copy.querySelector(".studentLastName").textContent = student.lastName;
   copy.querySelector(".studentNickname").textContent = student.nickName;
+  copy.querySelector(".studentGender").textContent = student.gender;
+  copy.querySelector(".studentHouse").textContent = student.house;
   //make copy
   //change content inside copy
   //append to parent
@@ -302,29 +304,3 @@ async function createBloodType(lastName) {
   //console.log(bloodType);
   return bloodType;
 }
-
-/* function getImageSrc() {
-  allStudents.forEach((student) => {
-    if (student.lastName !== "") {
-      // for every student, find out whether there are more students with the same last name
-      const sameLastName = allStudents.filter(
-        (item) => item.lastName === student.lastName
-      );
-
-      // check whether last name consists of two words with hyphen, and, if yes, shorten it
-      const shortenedLastName = shortenLastName(student.lastName);
-
-      // if there is more than one student with the same last name
-      if (sameLastName.length > 1) {
-        student.imageSrc = `assets/images/${shortenedLastName.toLowerCase()}_${student.firstName.toLowerCase()}.png`;
-      } else {
-        // if there is only one student with this last name
-        student.imageSrc = `assets/images/${shortenedLastName.toLowerCase()}_${student.firstName
-          .slice(0, 1)
-          .toLowerCase()}.png`;
-      }
-    } else {
-      student.imageSrc = "";
-    }
-  });
-} */

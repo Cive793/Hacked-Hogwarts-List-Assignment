@@ -123,7 +123,7 @@ main {
 
 .listSections {
   padding: 30px;
-  padding-left: 8rem;
+  padding-left: 6rem;
   width: 100%;
   height: fit-content;
   border-spacing: 20px;
@@ -156,8 +156,7 @@ tbody:first-child {
 }
 
 tbody tr:hover {
-  background-color: #740001;
-  color: white;
+  background-color: #f19799;
 }
 
 .attributions {
