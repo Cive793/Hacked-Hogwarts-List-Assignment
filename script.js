@@ -193,9 +193,14 @@ function displayStudent(student) {
   const template = document.querySelector("#student").content;
   const copy = template.cloneNode(true);
   console.log(copy);
+  copy.querySelector(".studentFirstName").textContent = student.firstName;
+  copy.querySelector(".studentMiddleName").textContent = student.middleName;
+  copy.querySelector(".studentLastName").textContent = student.lastName;
   //make copy
   //change content inside copy
   //append to parent
+  const parent = document.querySelector("tbody");
+  parent.appendChild(copy);
 }
 
 //cleaning up data

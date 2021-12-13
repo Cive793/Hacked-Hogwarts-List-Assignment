@@ -126,7 +126,8 @@ main {
   width: 100%;
 }
 
-.listSections thead {
+.student td {
+  width: min-content;
 }
 
 .sorting {
