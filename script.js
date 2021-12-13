@@ -196,6 +196,7 @@ function displayStudent(student) {
   copy.querySelector(".studentFirstName").textContent = student.firstName;
   copy.querySelector(".studentMiddleName").textContent = student.middleName;
   copy.querySelector(".studentLastName").textContent = student.lastName;
+  copy.querySelector(".studentNickname").textContent = student.nickName;
   //make copy
   //change content inside copy
   //append to parent
