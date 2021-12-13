@@ -64,10 +64,11 @@ async function loadJson() {
 
 function prepareObjects(dataStudents /* dataBloodFamilies */) {
   allStudents = dataStudents.map(prepareObject);
+  //console.log(allStudents);
   /* pureBloodFamilies = dataBloodFamilies.pure;
   halfBloodFamilies = dataBloodFamilies.half; */
 
-  //console.log(allStudents);
+  console.log(allStudents);
 
   //display list
   buildList(allStudents);
@@ -75,17 +76,18 @@ function prepareObjects(dataStudents /* dataBloodFamilies */) {
 
 function prepareObject(student) {
   const studentObject = Object.create(Student);
-  student.img = createImage(student.fullname);
-  student.firstName = createFirstName(student.fullname);
-  student.middleName = createMiddleName(student.fullname);
-  student.lastName = createLastName(student.fullname);
-  student.nickName = createNickName(student.fullname);
-  student.house = createHouse(student.house);
-  student.gender = Student.gender;
-  student.bloodStatus = createBloodType(student.lastName);
+  studentObject.img = createImage(student.fullname);
+  studentObject.firstName = createFirstName(student.fullname);
+  studentObject.middleName = createMiddleName(student.fullname);
+  studentObject.lastName = createLastName(student.fullname);
+  studentObject.nickName = createNickName(student.fullname);
+  studentObject.house = createHouse(student.house);
+  studentObject.gender = Student.gender;
+  studentObject.bloodStatus = createBloodType(student.lastName);
   //console.log(pureBloodFamilies);
 
-  return student;
+  //console.log(Student);
+  return studentObject;
 }
 
 function registerFilter(filterChoiceEvent) {
@@ -177,10 +179,24 @@ function buildList() {
   const newList = filterList(allStudents);
   const sortedList = sortList(newList);
 
+  console.log(sortedList);
   displayList(sortedList);
 }
 
-function displayList(sortedList) {}
+function displayList(sortedList) {
+  sortedList.forEach((student) => displayStudent(student));
+}
+
+function displayStudent(student) {
+  //console.log(student);
+
+  const template = document.querySelector("#student").content;
+  const copy = template.cloneNode(true);
+  console.log(copy);
+  //make copy
+  //change content inside copy
+  //append to parent
+}
 
 //cleaning up data
 function createImage(fullname) {}
