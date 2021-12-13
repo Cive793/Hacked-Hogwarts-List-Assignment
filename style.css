@@ -123,17 +123,12 @@ main {
 
 .listSections {
   padding: 30px;
+  padding-left: 8rem;
   width: 100%;
 }
 
 .student td {
-  width: min-content;
-}
-
-.sorting {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+  width: 100px;
 }
 
 .listSections th {
@@ -142,6 +137,12 @@ main {
   font-weight: 600;
   color: #740001;
   cursor: pointer;
+  text-align: left;
+  width: 6rem;
+}
+
+tbody td {
+  text-align: left;
 }
 
 .attributions {

@@ -40,7 +40,6 @@
         <table class="listSections">
           <thead>
             <tr class="sorting">
-              <!-- <th data-action="sort" data-sort-direction="asc" data-sort="image">Image</th> -->
               <th data-action="sort" data-sort-direction="asc" data-sort="firstName">First name</th>
               <th data-action="sort" data-sort-direction="asc" data-sort="middleName">Middle name</th>
               <th data-action="sort" data-sort-direction="asc" data-sort="lastName">Last name</th>
@@ -50,21 +49,9 @@
             </tr>
           </thead>
           <tbody>
-            <!-- template will be copied and inserted here -->
+            <!-- template -->
           </tbody>
         </table>
-
-        <template id="student">
-          <tr>
-            <!-- <td data-field="image">Image</td> -->
-            <td class="studentFirstName" data-field="firstName"></td>
-            <td class="studentMiddleName" data-field="middleName"></td>
-            <td class="studentLastName" data-field="lastName"></td>
-            <td class="studentNickname" data-field="nickName"></td>
-            <td class="studentGender" data-field="gender"></td>
-            <td class="studentHouse" data-field="house"></td>
-          </tr>
-        </template>
       </div>
     </main>
 
@@ -77,6 +64,17 @@
         <a href="https://www.freeiconspng.com/img/32543">https://www.freeiconspng.com/img/32543</a>
       </div>
     </footer>
+
+    <template id="student">
+      <tr>
+        <td class="studentFirstName" data-field="firstName"></td>
+        <td class="studentMiddleName" data-field="middleName"></td>
+        <td class="studentLastName" data-field="lastName"></td>
+        <td class="studentNickname" data-field="nickName"></td>
+        <td class="studentGender" data-field="gender"></td>
+        <td class="studentHouse" data-field="house"></td>
+      </tr>
+    </template>
 
     <script src="script.js"></script>
   </body>
