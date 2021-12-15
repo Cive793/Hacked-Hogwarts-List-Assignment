@@ -149,12 +149,12 @@ function setSort(sortBy, sortDir) {
   buildList();
 }
 
-function sortList(sortedList) {
+function sortList(newList) {
   let sortDirection = 1;
   if (filterSortSettings.sortDir === "desc") {
     sortDirection = -1;
   }
-  sortedList = sortedList.sort(sortByProperty);
+  newList = newList.sort(sortByProperty);
 
   function sortByProperty(a, b) {
     if (a[filterSortSettings.sortBy] < b[filterSortSettings.sortBy]) {
@@ -163,7 +163,7 @@ function sortList(sortedList) {
       return 1 * sortDirection;
     }
   }
-  return sortedList;
+  return newList;
 }
 
 function registerSearch() {
@@ -184,6 +184,7 @@ function buildList() {
 }
 
 function displayList(sortedList) {
+  document.querySelector("tbody").innerHTML = "";
   sortedList.forEach((student) => displayStudent(student));
 }
 
